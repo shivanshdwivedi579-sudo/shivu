@@ -14,16 +14,33 @@
   --accent: #ffb300;
 }
 
+.light {
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #000000;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #000, #111);
+  background: var(--bg);
   color: var(--text);
 }
 
 header {
   padding: 40px 20px;
   text-align: center;
+}
+
+.toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: var(--card);
 }
 
 .section {
@@ -48,7 +65,6 @@ input {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
-  margin-top: 15px;
 }
 
 .diamond {
@@ -70,6 +86,17 @@ input {
   margin-top: 10px;
 }
 
+button {
+  padding: 14px 30px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--accent);
+  color: #000;
+  margin-top: 10px;
+}
+
 footer {
   text-align: center;
   color: gray;
@@ -81,102 +108,19 @@ footer {
 
 <body>
 
+<button class="toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+
 <header>
   <h1>🔥 Free Fire Diamond Top-Up</h1>
   <p>Fast • Secure • Manual Verification</p>
 </header>
 
-<!-- PLAYER DETAILS -->
 <div class="section">
   <h2>🎮 Player Details</h2>
   <input type="text" id="uid" placeholder="Enter Player UID">
   <p id="playerName" style="color:#00ffcc;font-weight:bold;"></p>
 </div>
 
-<!-- DIAMOND OPTIONS -->
-<div class="section">
-  <h2>💎 Select Diamonds</h2>
+<div class="
 
-  <div class="diamond-grid">
-    <div class="diamond" onclick="selectDiamond(520,129)">💎 520<br>₹129</div>
-    <div class="diamond" onclick="selectDiamond(1500,349)">💎 1500<br>₹349</div>
-    <div class="diamond" onclick="selectDiamond(3000,649)">💎 3000<br>₹649</div>
-    <div class="diamond" onclick="selectDiamond(4000,849)">💎 4000<br>₹849</div>
-    <div class="diamond" onclick="selectDiamond(5600,1099)">💎 5600<br>₹1099</div>
-    <div class="diamond" onclick="selectDiamond(12000,3599)">💎 12000<br>₹3599</div>
-  </div>
-
-  <p id="priceText">Select a diamond pack</p>
-</div>
-
-<!-- PAYMENT -->
-<div class="section">
-  <h2>📱 Scan & Pay</h2>
-
-  <div class="qr-box">
-    <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=shivanshdwivedi0120-1@okaxis&pn=Shivansh&cu=INR">
-  </div>
-
-  <p id="upiText">
-    Pay to UPI ID: <b>shivanshdwivedi0120-1@okaxis</b>
-  </p>
-</div>
-
-<!-- SCREENSHOT UPLOAD -->
-<div class="section">
-  <h2>📸 Upload Payment Screenshot</h2>
-
-  <input type="file" accept="image/*" onchange="previewImage(event)">
-
-  <div style="margin-top:15px;">
-    <img id="preview" style="max-width:250px; border-radius:12px; display:none;">
-  </div>
-
-  <p style="color:gray;font-size:13px;">
-    Upload screenshot after payment. Order will be verified manually.
-  </p>
-</div>
-
-<footer>
-  ⚠️ Payments are verified manually. No instant delivery.
-</footer>
-
-<script>
-const UPI_ID = "shivanshdwivedi0120-1@okaxis";
-
-// Player name preview
-document.getElementById("uid").addEventListener("input", function () {
-  if (this.value.length >= 6) {
-    document.getElementById("playerName").innerHTML =
-      "🎮 Player: Player_" + this.value.slice(-4);
-  } else {
-    document.getElementById("playerName").innerHTML = "";
-  }
-});
-
-// Update QR when amount changes
-function selectDiamond(diamond, price) {
-  document.getElementById("priceText").innerHTML =
-    `💎 ${diamond} Diamonds — ₹${price}`;
-
-  let upiLink = `upi://pay?pa=${UPI_ID}&pn=Shivansh&am=${price}&cu=INR`;
-
-  document.getElementById("qrImage").src =
-    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-    encodeURIComponent(upiLink);
-}
-
-// Preview screenshot
-function previewImage(event) {
-  const img = document.getElementById("preview");
-  const file = event.target.files[0];
-
-  if (file) {
-    img.src = URL.createObjectURL(file);
-    img.style.display = "block";
-  }
-}
-</script>
-
-</body>
-</html>
+  
