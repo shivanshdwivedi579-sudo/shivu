@@ -109,15 +109,17 @@ footer {
   <p id="priceText">Select a diamond pack</p>
 </div>
 
-<!-- PAYMENT SECTION -->
+<!-- PAYMENT -->
 <div class="section">
-  <h2>📱 Pay Using GPay</h2>
+  <h2>📱 Scan & Pay</h2>
 
   <div class="qr-box">
-    <img id="qrImage" src="" alt="QR Code will appear here">
+    <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=shivanshdwivedi0120-1@okaxis&pn=Shivansh&cu=INR">
   </div>
 
-  <p id="upiText"></p>
+  <p id="upiText">
+    Pay to UPI ID: <b>shivanshdwivedi0120-1@okaxis</b>
+  </p>
 </div>
 
 <!-- SCREENSHOT UPLOAD -->
@@ -131,8 +133,7 @@ footer {
   </div>
 
   <p style="color:gray;font-size:13px;">
-    Upload screenshot after payment.<br>
-    Order will be verified manually.
+    Upload screenshot after payment. Order will be verified manually.
   </p>
 </div>
 
@@ -153,23 +154,19 @@ document.getElementById("uid").addEventListener("input", function () {
   }
 });
 
-// Select diamond + generate QR
+// Update QR when amount changes
 function selectDiamond(diamond, price) {
   document.getElementById("priceText").innerHTML =
     `💎 ${diamond} Diamonds — ₹${price}`;
 
   let upiLink = `upi://pay?pa=${UPI_ID}&pn=Shivansh&am=${price}&cu=INR`;
 
-  let qrURL =
+  document.getElementById("qrImage").src =
     "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
     encodeURIComponent(upiLink);
-
-  document.getElementById("qrImage").src = qrURL;
-  document.getElementById("upiText").innerHTML =
-    `Pay to UPI ID: <b>${UPI_ID}</b>`;
 }
 
-// Screenshot preview
+// Preview screenshot
 function previewImage(event) {
   const img = document.getElementById("preview");
   const file = event.target.files[0];
