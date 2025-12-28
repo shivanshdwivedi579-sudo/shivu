@@ -1,81 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shivansh | Official Website</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #111;
-      color: #fff;
-      text-align: center;
-    }
-
-    header {
-      background: linear-gradient(135deg, #000, #333);
-      padding: 60px 20px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-      color: white;
-    }
-
-    p {
-      font-size: 18px;
-      color: #ccc;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 35px;
-      font-size: 16px;
-      color: #000;
-      background: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #ccc;
-      transform: scale(1.05);
-    }
-
-    .section {
-      padding: 50px 20px;
-      background: #1c1c1c;
-    }
-
-    footer {
-      background: #000;
-      padding: 15px;
-      color: #888;
-      font-size: 14px;
-    }
-  </style>
-</head>
-
-<body>
-
-  
-
-  <footer>
-
-    
-  </footer>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -88,14 +13,15 @@
   --card: #1e1e1e;
   --btn: #ffffff;
   --btn-text: #000000;
+  --green: #00ff99;
+  --red: #ff4d4d;
+  --yellow: #ffcc00;
 }
 
 .light {
   --bg: #f4f4f4;
   --text: #000000;
   --card: #ffffff;
-  --btn: #000000;
-  --btn-text: #ffffff;
 }
 
 body {
@@ -103,38 +29,59 @@ body {
   font-family: "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
-  transition: 0.3s;
 }
 
 header {
-  padding: 60px 20px;
+  padding: 50px 20px;
   text-align: center;
 }
 
-h1 {
-  font-size: 40px;
-}
-
-p {
-  font-size: 18px;
-  opacity: 0.9;
+h1, h2 {
+  margin: 10px 0;
 }
 
 .btn {
-  display: inline-block;
-  margin: 15px;
   padding: 14px 35px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 8px;
   background: var(--btn);
   color: var(--btn-text);
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
 }
 
 .btn:hover {
   transform: scale(1.05);
 }
+
+.section {
+  background: var(--card);
+  margin: 20px;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+input {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  width: 220px;
+  font-size: 16px;
+  margin: 10px;
+  text-align: center;
+}
+
+.status {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.success { color: var(--green); }
+.pending { color: var(--yellow); }
+.cancel { color: var(--red); }
 
 .toggle {
   position: fixed;
@@ -143,32 +90,14 @@ p {
   background: var(--card);
   border: none;
   padding: 10px 15px;
-  color: var(--text);
-  cursor: pointer;
   border-radius: 20px;
-}
-
-.section {
-  padding: 40px 20px;
-  background: var(--card);
-  margin: 20px;
-  border-radius: 15px;
+  cursor: pointer;
 }
 
 footer {
   padding: 15px;
   text-align: center;
   color: gray;
-}
-
-/* Mobile Responsive */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 30px;
-  }
-  p {
-    font-size: 16px;
-  }
 }
 </style>
 </head>
@@ -179,19 +108,36 @@ footer {
 
 <header>
   <h1>Shivansh Dwivedi</h1>
-  <p>Welcome to my professional website</p>
-
-  <a class="btn" href="https://www.instagram.com/its_shivansh_dwivedi_pvt/" target="_blank">
-    Follow me on Instagram
-  </a>
+  <p>Fast & Secure Diamond Top-Up</p>
 </header>
 
 <div class="section">
-  <h2>About Me</h2>
-  <p>
-    I am passionate about technology, creativity, and building modern websites.
-    This website is fully responsive and works on all devices.
-  </p>
+  <h2>💎 Diamond Top-Up</h2>
+
+  <button class="btn" onclick="setAmount(10)">₹10</button>
+  <button class="btn" onclick="setAmount(50)">₹50</button>
+  <button class="btn" onclick="setAmount(100)">₹100</button>
+  <button class="btn" onclick="setAmount(500)">₹500</button>
+
+  <br><br>
+
+  <input type="number" id="amount" placeholder="Minimum ₹1" min="1">
+
+  <br><br>
+
+  <button class="btn" onclick="payNow()">Pay with GPay</button>
+
+  <p><b>UPI ID:</b> shivanshdwivedi0120-1@okaxis</p>
+</div>
+
+<div class="section">
+  <h2>📦 Order Status</h2>
+
+  <button class="btn" onclick="setStatus('pending')">Pending</button>
+  <button class="btn" onclick="setStatus('success')">Confirmed</button>
+  <button class="btn" onclick="setStatus('cancel')">Cancelled</button>
+
+  <div id="statusText" class="status">No order yet</div>
 </div>
 
 <footer>
@@ -202,11 +148,45 @@ footer {
 function toggleMode() {
   document.body.classList.toggle("light");
 }
+
+function setAmount(val) {
+  document.getElementById("amount").value = val;
+}
+
+function payNow() {
+  let amount = document.getElementById("amount").value;
+
+  if (amount < 1) {
+    alert("Minimum amount is ₹1");
+    return;
+  }
+
+  document.getElementById("statusText").innerHTML =
+    "<span class='pending'>⏳ Payment Pending...</span>";
+
+  let upi = "upi://pay?pa=shivanshdwivedi0120-1@okaxis&pn=Shivansh&am=" + amount + "&cu=INR";
+  window.location.href = upi;
+}
+
+function setStatus(type) {
+  let status = document.getElementById("statusText");
+
+  if (type === "success") {
+    status.innerHTML = "✅ Order Confirmed";
+    status.className = "status success";
+  }
+
+  if (type === "pending") {
+    status.innerHTML = "⏳ Order Pending";
+    status.className = "status pending";
+  }
+
+  if (type === "cancel") {
+    status.innerHTML = "❌ Order Cancelled";
+    status.className = "status cancel";
+  }
+}
 </script>
 
 </body>
 </html>
-
-
-
-
