@@ -96,6 +96,11 @@ button {
   margin: 6px;
 }
 
+.warning {
+  color: #ffcc00;
+  font-size: 14px;
+}
+
 table {
   width: 100%;
   color: white;
@@ -157,7 +162,7 @@ footer {
       src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=shivanshdwivedi0120-1@okaxis&pn=Shivansh&cu=INR">
   </div>
 
-  <p><b>UPI:</b> shivanshdwivedi0120-1@okaxis</p>
+  <p class="warning">⚠️ QR payments support up to ₹2000 only.</p>
 
   <button onclick="payUPI('gpay')">Google Pay</button>
   <button onclick="payUPI('phonepe')">PhonePe</button>
@@ -300,4 +305,3 @@ renderOrders();
 
 </body>
 </html>
-
