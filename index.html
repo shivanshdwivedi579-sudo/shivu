@@ -1,249 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Free Fire Diamond Top-Up</title>
+<title>For My Lovely Sister 💖</title>
 
 <style>
-:root {
-  --bg: #0b0b0b;
-  --card: #1b1b1b;
-  --text: #ffffff;
-  --accent: #ffb300;
-}
-
-.light {
-  --bg: #f5f5f5;
-  --card: #ffffff;
-  --text: #000000;
-}
-
 body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    overflow: hidden;
 }
 
-header {
-  padding: 40px 20px;
-  text-align: center;
+h1 {
+    margin-top: 80px;
+    font-size: 40px;
+    color: white;
 }
 
-.toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  background: var(--card);
-}
-
-.section {
-  background: var(--card);
-  margin: 20px;
-  padding: 25px;
-  border-radius: 16px;
-  text-align: center;
-}
-
-input {
-  width: 85%;
-  padding: 14px;
-  margin: 10px 0;
-  border-radius: 12px;
-  border: none;
-  font-size: 16px;
-  text-align: center;
-}
-
-.diamond-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-}
-
-.diamond {
-  background: linear-gradient(135deg, #222, #111);
-  padding: 15px;
-  border-radius: 12px;
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-
-.diamond:hover {
-  border-color: var(--accent);
-  transform: scale(1.05);
-}
-
-.qr-box img {
-  width: 230px;
-  border-radius: 12px;
+p {
+    font-size: 20px;
+    color: white;
 }
 
 button {
-  padding: 14px 30px;
-  border-radius: 30px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  background: var(--accent);
-  color: #000;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #ff4b5c;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-table {
-  width: 100%;
-  color: white;
-  border-collapse: collapse;
+button:hover {
+    background: #ffe6ea;
 }
 
-th, td {
-  border-bottom: 1px solid #444;
-  padding: 8px;
+#message {
+    margin-top: 25px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    padding: 0 20px;
 }
 
-footer {
-  text-align: center;
-  color: gray;
-  padding: 15px;
-  font-size: 13px;
+.badge {
+    margin-top: 20px;
+    font-size: 24px;
+    background: gold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    color: black;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<button class="toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+<h1>Dear Didi 💕</h1>
+<p>I made this little surprise just for you ✨</p>
 
-<header>
-  <h1>🔥 Free Fire Diamond Top-Up</h1>
-  <p>Fast • Secure • Manual Verification</p>
-</header>
+<button onclick="showMessage()">Open My Message 💖</button>
 
-<!-- PLAYER -->
-<div class="section">
-  <h2>🎮 Player Details</h2>
-  <input type="text" id="uid" placeholder="Enter Player UID">
-  <p id="playerName" style="color:#00ffcc;font-weight:bold;"></p>
-</div>
+<p id="message"></p>
 
-<!-- DIAMONDS -->
-<div class="section">
-  <h2>💎 Select Diamonds</h2>
-
-  <div class="diamond-grid">
-    <div class="diamond" onclick="selectDiamond(520,129)">💎 520<br>₹129</div>
-    <div class="diamond" onclick="selectDiamond(1500,349)">💎 1500<br>₹349</div>
-    <div class="diamond" onclick="selectDiamond(3000,649)">💎 3000<br>₹649</div>
-    <div class="diamond" onclick="selectDiamond(4000,849)">💎 4000<br>₹849</div>
-    <div class="diamond" onclick="selectDiamond(5600,1099)">💎 5600<br>₹1099</div>
-  </div>
-
-  <p id="priceText">Select a diamond pack</p>
-</div>
-
-<!-- PAYMENT -->
-<div class="section">
-  <h2>💳 Pay Using UPI</h2>
-
-  <div class="qr-box">
-    <img id="qrImage"
-      src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=shivanshdwivedi0120-1@okaxis&pn=Shivansh&cu=INR">
-  </div>
-
-  <p><b>UPI:</b> shivanshdwivedi0120-1@okaxis</p>
-
-  <button onclick="payUPI('gpay')">Google Pay</button>
-  <button onclick="payUPI('phonepe')">PhonePe</button>
-  <button onclick="payUPI('paytm')">Paytm</button>
-  <button onclick="payUPI('bhim')">BHIM</button>
-  <button onclick="payUPI('upi')">Any UPI</button>
-</div>
-
-<!-- SCREENSHOT -->
-<div class="section">
-  <h2>📸 Upload Payment Screenshot</h2>
-  <input type="file" accept="image/*" onchange="previewImage(event)">
-  <br><br>
-  <img id="preview" style="max-width:250px; display:none; border-radius:12px;">
-</div>
-
-<!-- ORDER -->
-<div class="section">
-  <h2>📦 Add Order</h2>
-  <button onclick="placeOrder()">Add Order</button>
-</div>
-
-<!-- ORDER LIST -->
-<div class="section">
-  <h2>📋 Orders</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Order ID</th>
-        <th>UID</th>
-        <th>Diamonds</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
-    <tbody id="orderList"></tbody>
-  </table>
-</div>
-
-<footer>
-  ⚠️ Payments are verified manually. No instant delivery.
-</footer>
+<div class="badge">👑 Best Sister Ever 👑</div>
 
 <script>
-const UPI_ID = "shivanshdwivedi0120-1@okaxis";
-
-function toggleTheme() {
-  document.body.classList.toggle("light");
+function showMessage() {
+    document.getElementById("message").innerHTML =
+    "You are not just my sister, you are my forever best friend. ❤️ No matter how busy life gets, I always enjoy the time we spend together. So today, I don’t just want to say thank you… I want to invite you to play a game with me 🎮✨ Let’s create some fun memories together like always 💖";
 }
 
-document.getElementById("uid").addEventListener("input", function () {
-  if (this.value.length >= 6) {
-    document.getElementById("playerName").innerHTML =
-      "🎮 Player_" + this.value.slice(-4);
-  } else {
-    document.getElementById("playerName").innerHTML = "";
-  }
-});
+// Floating hearts
+setInterval(function() {
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
 
-function selectDiamond(diamond, price) {
-  window.selectedDiamond = diamond;
-  window.selectedPrice = price;
+    setTimeout(function() {
+        heart.remove();
+    }, 5000);
+}, 500);
+</script>
 
-  document.getElementById("priceText").innerHTML =
-    `💎 ${diamond} Diamonds — ₹${price}`;
-
-  const upi = `upi://pay?pa=${UPI_ID}&pn=Shivansh&am=${price}&cu=INR`;
-  document.getElementById("qrImage").src =
-    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-    encodeURIComponent(upi);
-}
-
-function previewImage(e) {
-  const img = document.getElementById("preview");
-  img.src = URL.createObjectURL(e.target.files[0]);
-  img.style.display = "block";
-}
-
-function generateOrderID() {
-  return "FF" + Math.floor(100000 + Math.random() * 900000);
-}
-
-function placeOrder() {
-  const uid = document.getElementById("uid").value;
-  if (!uid || !window.selectedDiamond) {
-    alert("Please enter UID and select diamonds");
-    return;
-  }
-
-  const
-
-  
+</body>
+</html>
