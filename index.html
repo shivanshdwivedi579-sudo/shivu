@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Sister Sasi 💖</title>
+<title>For My Sister 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -10,84 +10,42 @@ body{
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg,#ff9a9e,#fad0c4);
     text-align:center;
-    overflow-x:hidden;
+    color:white;
 }
 
 .hero{
-    padding:80px 20px;
-    color:white;
-}
-
-.hero h1{
-    font-size:50px;
-}
-
-.hero p{
-    font-size:22px;
-    max-width:800px;
-    margin:auto;
-}
-
-button{
-    padding:15px 40px;
-    font-size:20px;
-    border:none;
-    border-radius:30px;
-    background:white;
-    color:#ff4b5c;
-    cursor:pointer;
-    margin-top:20px;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.1);
-}
-
-#message{
-    padding:40px 20px;
-    font-size:18px;
-    color:white;
-    max-width:900px;
-    margin:auto;
-    text-align:left;
-}
-
-.gallery{
-    background:white;
     padding:60px 20px;
 }
 
-.gallery h2{
-    color:#ff4b5c;
+.hero h1{
     font-size:32px;
 }
 
-.images{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px;
-    margin-top:30px;
+button{
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#ff4b5c;
+    margin-top:20px;
+    cursor:pointer;
 }
 
-.images img{
-    width:250px;
-    height:300px;
-    object-fit:cover;
-    border-radius:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+#reasons{
+    padding:20px;
+    text-align:left;
+    max-width:600px;
+    margin:auto;
+    font-size:15px;
+    line-height:1.6;
 }
 
-.heart{
-    position:fixed;
-    color:white;
-    animation:float 5s linear infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(100vh);opacity:1;}
-    100%{transform:translateY(-10vh);opacity:0;}
+.reason{
+    margin-bottom:15px;
+    background:rgba(255,255,255,0.2);
+    padding:10px;
+    border-radius:10px;
 }
 </style>
 </head>
@@ -95,64 +53,132 @@ button:hover{
 <body>
 
 <div class="hero">
-<h1>Dear Sasi 💕</h1>
-<p>You are not just my sister, you are my strength, my guide, and my forever best friend. ❤️</p>
-
-<button onclick="generateMessage()">Read My 100 Reasons 💖</button>
+<h1>100 Reasons Why You Are Amazing 💕</h1>
+<button onclick="showReasons()">Read All Reasons 💖</button>
 <br>
 <button onclick="playGame()">Accept – Let's Play Free Fire 🎮🔥</button>
 </div>
 
-<div id="message"></div>
-
-<!-- Telugu Brother Sister Song -->
-<div style="padding:40px;">
-<h2 style="color:white;">A Special Song For You 🎵</h2>
-<iframe width="300" height="200"
-src="https://www.youtube.com/embed/3tmd-ClpJxA"
-frameborder="0"
-allowfullscreen>
-</iframe>
-</div>
-
-<div class="gallery">
-<h2>Anime Vibes For My Super Sister ✨</h2>
-
-<div class="images">
-<img src="https://source.unsplash.com/400x600/?anime,girl">
-<img src="https://source.unsplash.com/400x600/?anime,cute">
-<img src="https://source.unsplash.com/400x600/?anime,aesthetic">
-<img src="https://source.unsplash.com/400x600/?anime,art">
-<img src="https://source.unsplash.com/400x600/?anime,illustration">
-<img src="https://source.unsplash.com/400x600/?anime,wallpaper">
-<img src="https://source.unsplash.com/400x600/?anime,portrait">
-<img src="https://source.unsplash.com/400x600/?anime,character">
-</div>
-</div>
+<div id="reasons"></div>
 
 <script>
-function generateMessage(){
-let text = "";
-for(let i=1; i<=100; i++){
-text += "<p><b>Reason " + i + ":</b> Sasi, you have always protected me, supported me, inspired me, and filled my life with happiness. I am truly lucky to have you as my sister. ❤️</p>";
+
+const reasons = [
+
+"You always stand by me no matter what.",
+"You protect me even when I don't realize it.",
+"You give the best advice.",
+"You understand me without explanation.",
+"You make difficult days easier.",
+"You motivate me to improve.",
+"You correct me when I'm wrong.",
+"You celebrate my small achievements.",
+"You believe in me.",
+"You encourage me to try again.",
+"You stay strong in tough situations.",
+"You manage responsibilities so well.",
+"You handle problems calmly.",
+"You always think about family first.",
+"You make everyone feel comfortable.",
+"You are kind to others.",
+"You forgive easily.",
+"You teach me patience.",
+"You support my dreams.",
+"You guide me silently.",
+"You listen carefully.",
+"You never give up.",
+"You inspire confidence.",
+"You make sacrifices quietly.",
+"You cheer me up when I'm sad.",
+"You make home feel warm.",
+"You bring positivity.",
+"You keep things balanced.",
+"You show maturity.",
+"You give honest feedback.",
+"You protect family values.",
+"You help without expecting anything.",
+"You share happiness.",
+"You care deeply.",
+"You stay loyal.",
+"You speak wisely.",
+"You stay humble.",
+"You lead by example.",
+"You are responsible.",
+"You are dependable.",
+"You are emotionally strong.",
+"You are thoughtful.",
+"You are caring.",
+"You are supportive.",
+"You are encouraging.",
+"You are calm under pressure.",
+"You are inspiring.",
+"You are patient.",
+"You are loving.",
+"You are trustworthy.",
+"You are protective.",
+"You are generous.",
+"You are understanding.",
+"You are respectful.",
+"You are confident.",
+"You are intelligent.",
+"You are hardworking.",
+"You are brave.",
+"You are resilient.",
+"You are determined.",
+"You are honest.",
+"You are positive.",
+"You are creative.",
+"You are optimistic.",
+"You are compassionate.",
+"You are sincere.",
+"You are reliable.",
+"You are selfless.",
+"You are strong-minded.",
+"You are disciplined.",
+"You are organized.",
+"You are caring about details.",
+"You are emotionally aware.",
+"You are supportive of growth.",
+"You are motivating.",
+"You are wise beyond your age.",
+"You are patient with mistakes.",
+"You are protective of loved ones.",
+"You are calm during chaos.",
+"You are supportive in silence.",
+"You are always there.",
+"You make life easier.",
+"You reduce stress.",
+"You spread happiness.",
+"You are someone I trust.",
+"You are someone I admire.",
+"You are someone I respect.",
+"You are someone I learn from.",
+"You are someone I look up to.",
+"You make me stronger.",
+"You make me better.",
+"You make me confident.",
+"You make me feel safe.",
+"You make me proud.",
+"You make memories special.",
+"You turn problems into lessons.",
+"You bring light into life.",
+"You make every day meaningful.",
+"You are irreplaceable."
+
+];
+
+function showReasons(){
+let output="";
+for(let i=0;i<reasons.length;i++){
+output += "<div class='reason'><b>Reason "+(i+1)+":</b> "+reasons[i]+"</div>";
 }
-text += "<p><b>Final Message:</b> And today, instead of just saying thank you, I want to invite you to play Free Fire with me 🎮🔥 Let’s create more fun memories together like always 💕</p>";
-document.getElementById("message").innerHTML = text;
+document.getElementById("reasons").innerHTML=output;
 }
 
 function playGame(){
-alert("Sasi 💖 Let's open Free Fire and play together! 🎮🔥");
+alert("Let’s open Free Fire and create new memories together! 🎮🔥");
 }
 
-setInterval(function(){
-var heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+15)+"px";
-document.body.appendChild(heart);
-setTimeout(function(){heart.remove();},5000);
-},500);
 </script>
 
 </body>
