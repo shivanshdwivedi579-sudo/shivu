@@ -1,247 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>For Ayesha 💖</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
-background-size: 400% 400%;
-animation: gradient 10s ease infinite;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(-45deg,#ff4e50,#ff758c,#ff7eb3,#ff9966);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
 color:white;
 text-align:center;
 overflow-x:hidden;
 }
 
-@keyframes gradient{
+@keyframes bg{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
-.hero{
-padding:70px 20px;
+h1{
+font-family:'Great Vibes',cursive;
+font-size:65px;
+margin-top:50px;
+text-shadow:0 0 20px rgba(255,255,255,0.8);
 }
 
-.hero h1{
-font-size:34px;
-margin-bottom:15px;
+.card{
+max-width:900px;
+margin:40px auto;
+padding:30px;
+background:rgba(255,255,255,0.15);
+border-radius:25px;
+backdrop-filter:blur(15px);
+box-shadow:0 0 40px rgba(255,255,255,0.3);
 }
 
-.hero p{
-font-size:16px;
-opacity:0.9;
+#shayari{
+font-size:20px;
+min-height:80px;
+line-height:1.8;
+transition:0.5s;
 }
 
 button{
-padding:12px 25px;
-margin-top:25px;
-font-size:16px;
+padding:12px 30px;
 border:none;
 border-radius:30px;
+font-size:16px;
 background:white;
-color:#ff4b5c;
+color:#ff4b7d;
 cursor:pointer;
+margin-top:20px;
 transition:0.3s;
 }
 
-button:hover{
-transform:scale(1.05);
+button:hover{transform:scale(1.1);}
+
+.slideshow{
+margin-top:40px;
 }
 
-#reasons{
-padding:20px;
-max-width:650px;
-margin:auto;
-text-align:left;
-line-height:1.7;
+.slideshow img{
+width:260px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,255,255,0.6);
+transition:1s;
 }
 
-.reason{
-background:rgba(255,255,255,0.2);
-padding:12px;
-border-radius:12px;
-margin-bottom:12px;
-backdrop-filter:blur(5px);
+/* Floating Hearts */
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+animation:float 6s linear infinite;
 }
 
-.gallery{
-background:white;
-padding:50px 20px;
-color:#ff4b5c;
+@keyframes float{
+0%{transform:translateY(0) rotate(0deg); opacity:1;}
+100%{transform:translateY(-100vh) rotate(360deg); opacity:0;}
 }
 
-.gallery h2{
-margin-bottom:25px;
-}
-
-.images{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-}
-
-.images img{
-width:160px;
-height:220px;
-object-fit:cover;
-border-radius:15px;
-box-shadow:0 4px 15px rgba(0,0,0,0.3);
-transition:0.3s;
-}
-
-.images img:hover{
-transform:scale(1.08);
+footer{
+margin:50px 0 20px;
+font-size:14px;
+opacity:0.8;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-<h1>100 Reasons Why Ayesha Is Truly Special 💕</h1>
-<p>A small reminder of how important and amazing you are every single day.</p>
-<button onclick="showReasons()">Read All 100 Reasons 💖</button>
+<h1>For My Forever ❤️</h1>
+
+<div class="card">
+<p id="shayari"></p>
+<button onclick="loveLetter()">Open Love Letter 💌</button>
 </div>
 
-<div id="reasons"></div>
+<div class="slideshow">
+<img id="slide" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+</div>
 
-<div class="gallery">
-<h2>Anime Aesthetic Vibes ✨</h2>
-<div class="images">
-<img src="https://source.unsplash.com/300x400/?anime,girl">
-<img src="https://source.unsplash.com/300x400/?anime,portrait">
-<img src="https://source.unsplash.com/300x400/?anime,aesthetic">
-<img src="https://source.unsplash.com/300x400/?anime,illustration">
-<img src="https://source.unsplash.com/300x400/?anime,cute">
-<img src="https://source.unsplash.com/300x400/?anime,art">
-<img src="https://source.unsplash.com/300x400/?anime,wallpaper">
-<img src="https://source.unsplash.com/300x400/?anime,character">
-</div>
-</div>
+<footer>
+Made With ❤️ By Your Loving Husband
+</footer>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
 
 <script>
-
-const reasons = [
-"Her kindness makes everyone comfortable.",
-"She carries strength with grace.",
-"Her advice always makes sense.",
-"She supports silently but strongly.",
-"She inspires confidence.",
-"She stays calm during chaos.",
-"She spreads positivity.",
-"She understands without judgment.",
-"She values family deeply.",
-"She shows emotional maturity.",
-"She encourages growth.",
-"She handles responsibility well.",
-"She is dependable.",
-"She is thoughtful.",
-"She is caring.",
-"She is protective.",
-"She is inspiring.",
-"She is wise.",
-"She is patient.",
-"She is loyal.",
-"She is respectful.",
-"She is confident.",
-"She is intelligent.",
-"She is hardworking.",
-"She is brave.",
-"She is resilient.",
-"She is determined.",
-"She is honest.",
-"She is creative.",
-"She is optimistic.",
-"She is compassionate.",
-"She is sincere.",
-"She is reliable.",
-"She is selfless.",
-"She is disciplined.",
-"She is organized.",
-"She is strong-minded.",
-"She listens carefully.",
-"She gives honest feedback.",
-"She protects loved ones.",
-"She motivates others.",
-"She brings comfort.",
-"She reduces stress.",
-"She spreads happiness.",
-"She lifts others up.",
-"She never gives up.",
-"She leads by example.",
-"She handles challenges wisely.",
-"She makes life brighter.",
-"She adds warmth to every space.",
-"She values honesty.",
-"She makes others proud.",
-"She gives strength to family.",
-"She handles pressure gracefully.",
-"She makes problems feel smaller.",
-"She is emotionally strong.",
-"She respects everyone.",
-"She encourages confidence.",
-"She inspires improvement.",
-"She supports dreams.",
-"She makes people smile.",
-"She believes in others.",
-"She makes home peaceful.",
-"She is gentle yet strong.",
-"She keeps things balanced.",
-"She shares happiness.",
-"She values relationships.",
-"She brings calmness.",
-"She supports silently.",
-"She brings clarity.",
-"She handles conflict maturely.",
-"She shows empathy.",
-"She respects boundaries.",
-"She shows leadership.",
-"She is responsible.",
-"She gives reassurance.",
-"She spreads kindness.",
-"She protects dignity.",
-"She values effort.",
-"She shows gratitude.",
-"She gives hope.",
-"She brings stability.",
-"She values trust.",
-"She shows courage.",
-"She builds confidence.",
-"She handles stress maturely.",
-"She uplifts others.",
-"She sets good examples.",
-"She teaches patience.",
-"She inspires respect.",
-"She brings light.",
-"She makes memories special.",
-"She brings emotional balance.",
-"She stands strong for family.",
-"She supports during silence.",
-"She is irreplaceable.",
-"She makes life meaningful.",
-"She adds beauty to life.",
-"She makes everything better."
+const shayariList = [
+"Tum meri zindagi ki sabse haseen kahani ho.",
+"Har subah tumhari yaad se roshan hoti hai.",
+"Tumhari muskaan meri duniya ki roshni hai.",
+"Tum meri rooh ka sukoon ho.",
+"Har dhadkan me tum basi ho.",
+"Tum meri har dua ka jawab ho.",
+"Tum saath ho to har mushkil aasan hai.",
+"Tum meri duniya ka sabse pyaara rang ho.",
+"Tum meri zindagi ka sabse meetha ehsaas ho.",
+"Har pal tumhare saath jannat lagta hai.",
+"Tum meri khushiyon ka sabab ho.",
+"Tum meri har muskaan ki wajah ho.",
+"Tum meri rooh ki sabse pyaari awaaz ho.",
+"Tum meri har raat ka khwab ho.",
+"Tum meri zindagi ka sabse bada gift ho."
 ];
 
-function showReasons(){
-let output="";
-for(let i=0;i<reasons.length;i++){
-output += "<div class='reason'><b>Reason "+(i+1)+":</b> "+reasons[i]+"</div>";
+let i=0;
+function changeShayari(){
+document.getElementById("shayari").innerText=shayariList[i];
+i=(i+1)%shayariList.length;
 }
-document.getElementById("reasons").innerHTML=output;
-}
+setInterval(changeShayari,2500);
+changeShayari();
 
+/* Hearts */
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerText="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*25+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,400);
+
+/* Slideshow */
+const images=[
+"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+"https://images.unsplash.com/photo-1517841905240-472988babdf9",
+"https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+];
+let s=0;
+function slideShow(){
+document.getElementById("slide").src=images[s];
+s=(s+1)%images.length;
+}
+setInterval(slideShow,3000);
+
+/* Love Letter */
+function loveLetter(){
+alert("You are my today, my tomorrow, and my forever ❤️");
+}
 </script>
 
 </body>
 </html>
+
