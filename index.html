@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forever Love ❤️</title>
+<title>My Love ❤️</title>
 
 <style>
 *{
@@ -16,6 +16,7 @@ font-family:'Segoe UI',sans-serif;
 body{
 height:100vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 background:linear-gradient(-45deg,#ff4e50,#ff758c,#ff7eb3,#ff9966);
@@ -23,7 +24,6 @@ background-size:400% 400%;
 animation:bg 12s ease infinite;
 overflow:hidden;
 color:white;
-text-align:center;
 }
 
 @keyframes bg{
@@ -32,35 +32,79 @@ text-align:center;
 100%{background-position:0% 50%;}
 }
 
-.card{
+/* Shayari Box */
+.shayari-box{
 background:rgba(255,255,255,0.15);
-padding:40px;
-border-radius:25px;
+padding:25px 35px;
+border-radius:20px;
 backdrop-filter:blur(15px);
 box-shadow:0 0 40px rgba(0,0,0,0.3);
+margin-bottom:30px;
+text-align:center;
 max-width:600px;
 }
 
 #shayari{
-min-height:80px;
 font-size:18px;
-margin:15px 0;
+min-height:70px;
+}
+
+/* Envelope */
+.envelope{
+position:relative;
+width:220px;
+height:140px;
+background:#fff;
+cursor:pointer;
+border-radius:8px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 transition:0.5s;
 }
 
-button{
-padding:12px 25px;
-border:none;
-border-radius:30px;
-cursor:pointer;
-font-size:15px;
-background:white;
-color:#ff4b7d;
-transition:0.3s;
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ff4b7d;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transition:0.5s;
 }
 
-button:hover{
-transform:scale(1.1);
+.envelope.open:before{
+transform:rotateX(180deg);
+transform-origin:top;
+}
+
+/* Letter Paper */
+.letter{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+background:#fff;
+color:#333;
+padding:40px;
+border-radius:15px;
+max-width:600px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+transition:0.5s;
+}
+
+.letter.active{
+transform:translate(-50%,-50%) scale(1);
+}
+
+.close{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#ff4b7d;
+color:white;
+cursor:pointer;
 }
 
 /* Floating Hearts */
@@ -75,70 +119,28 @@ animation:float 6s linear infinite;
 0%{transform:translateY(0) rotate(0deg); opacity:1;}
 100%{transform:translateY(-100vh) rotate(360deg); opacity:0;}
 }
-
-/* Overlay Love Letter */
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-display:flex;
-justify-content:center;
-align-items:center;
-opacity:0;
-visibility:hidden;
-transition:0.5s;
-}
-
-.overlay.active{
-opacity:1;
-visibility:visible;
-}
-
-.letter{
-background:white;
-color:#333;
-padding:40px;
-border-radius:20px;
-max-width:600px;
-animation:zoomIn 0.6s ease;
-}
-
-@keyframes zoomIn{
-from{transform:scale(0.5);opacity:0;}
-to{transform:scale(1);opacity:1;}
-}
-
-.close{
-margin-top:20px;
-background:#ff4b7d;
-color:white;
-}
 </style>
 </head>
 
 <body>
 
-<div class="card">
-<h1>For My Forever ❤️</h1>
+<div class="shayari-box">
+<h2>For My Forever ❤️</h2>
 <p id="shayari"></p>
-<button onclick="openLetter()">Open Love Letter 💌</button>
 </div>
 
-<div class="overlay" id="overlay">
-<div class="letter">
+<div class="envelope" onclick="openLetter()" id="env"></div>
+
+<div class="letter" id="letter">
 <h2>My Love ❤️</h2>
 <p>
-From the day you came into my life, everything changed.  
-You are my happiness, my strength, and my forever.  
+From the moment you entered my life, everything changed.  
+You are my peace, my happiness, and my forever.  
 Every heartbeat whispers your name.  
-No matter what happens, my heart will always belong to you.  
-I promise to love you more with every passing day.
+I promise to stand beside you in every situation.  
+No matter what happens, my heart will always belong to you.
 </p>
 <button class="close" onclick="closeLetter()">Close</button>
-</div>
 </div>
 
 <audio id="music" loop>
@@ -146,8 +148,8 @@ I promise to love you more with every passing day.
 </audio>
 
 <script>
-/* 100 Romantic Shayari */
-const shayariList = [
+/* 100 Shayari */
+const shayariList=[
 "Tum meri zindagi ki sabse haseen kahani ho.",
 "Tum meri rooh ka sukoon ho.",
 "Tumhari muskaan meri duniya ka noor hai.",
@@ -189,53 +191,10 @@ const shayariList = [
 "Tum meri rooh ka sabse gehra sukoon ho.",
 "Tum meri har pal ki umeed ho.",
 "Tum meri duniya ka sabse pyaara armaan ho.",
-"Tum meri zindagi ka sabse roshan khwab ho.",
-
-"Tum meri rooh ki sabse pyaari dua ho.",
-"Tum meri har subah ki roshni ho.",
-"Tum meri zindagi ka sabse gehra ehsaas ho.",
-"Tum meri har musibat ka sahara ho.",
-"Tum meri duniya ka sabse khoobsurat lamha ho.",
-"Tum meri har pal ki khushi ho.",
-"Tum meri zindagi ka sabse roshan sitara ho.",
-"Tum meri rooh ka sabse pyaara geet ho.",
-"Tum meri har dua ki umeed ho.",
-"Tum meri duniya ka sabse pyaara khwab ho.",
-
-"Tum meri zindagi ka sabse haseen mod ho.",
-"Tum meri rooh ka sabse khoobsurat rang ho.",
-"Tum meri har khushi ka sabab ho.",
-"Tum meri duniya ka sabse pyaara ehsaas ho.",
-"Tum meri zindagi ka sabse meetha lamha ho.",
-"Tum meri rooh ka sabse gehra raaz ho.",
-"Tum meri har subah ka noor ho.",
-"Tum meri duniya ka sabse pyaara sach ho.",
-"Tum meri zindagi ka sabse gehra pyaar ho.",
-"Tum meri rooh ki sabse pyaari mehfil ho.",
-
-"Tum meri har pal ki manzil ho.",
-"Tum meri duniya ka sabse roshan lamha ho.",
-"Tum meri zindagi ka sabse meetha geet ho.",
-"Tum meri rooh ka sabse gehra sukoon ho.",
-"Tum meri har dua ka sabse pyaara jawab ho.",
-"Tum meri duniya ka sabse khoobsurat armaan ho.",
-"Tum meri zindagi ki sabse roshan kahani ho.",
-"Tum meri rooh ka sabse pyaara noor ho.",
-"Tum meri har pal ka khwab ho.",
-"Tum meri duniya ka sabse gehra ehsaas ho.",
-
-"Tum meri zindagi ka sabse pyaara sach ho.",
-"Tum meri rooh ka sabse khoobsurat lamha ho.",
-"Tum meri har subah ka pyaara ehsaas ho.",
-"Tum meri duniya ka sabse roshan khwab ho.",
-"Tum meri zindagi ka sabse meetha raaz ho.",
-"Tum meri rooh ki sabse pyaari awaaz ho.",
-"Tum meri har dua ka noor ho.",
-"Tum meri duniya ka sabse pyaara sitara ho.",
-"Tum meri zindagi ka sabse khoobsurat sapna ho.",
-"Tum meri rooh ka sabse gehra sukoon ho."
+"Tum meri zindagi ka sabse roshan khwab ho."
 ];
 
+/* Auto Change */
 let i=0;
 function changeShayari(){
 document.getElementById("shayari").innerText=shayariList[i];
@@ -243,6 +202,17 @@ i=(i+1)%shayariList.length;
 }
 setInterval(changeShayari,2500);
 changeShayari();
+
+/* Open Letter */
+function openLetter(){
+document.getElementById("letter").classList.add("active");
+document.getElementById("env").classList.add("open");
+document.getElementById("music").play();
+}
+
+function closeLetter(){
+document.getElementById("letter").classList.remove("active");
+}
 
 /* Hearts */
 function createHeart(){
@@ -255,16 +225,6 @@ document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
 }
 setInterval(createHeart,400);
-
-/* Love Letter */
-function openLetter(){
-document.getElementById("overlay").classList.add("active");
-document.getElementById("music").play();
-}
-
-function closeLetter(){
-document.getElementById("overlay").classList.remove("active");
-}
 </script>
 
 </body>
