@@ -1,40 +1,73 @@
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#0d0d0d;
+background:linear-gradient(-45deg,#2b0000,#660000,#990000,#cc0000);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
 color:white;
+overflow-x:hidden;
+opacity:0;
+animation:fadePage 0.8s forwards;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+@keyframes fadePage{
+to{opacity:1;}
 }
 
 nav{
-background:#111;
+background:#1a0000;
 padding:15px;
 text-align:center;
-position:sticky;
-top:0;
+box-shadow:0 0 20px rgba(255,0,0,0.4);
 }
 
 nav a{
-color:#ff4b7d;
+color:#ff4d4d;
 margin:0 10px;
 text-decoration:none;
 font-weight:600;
+transition:0.3s;
 }
 
 nav a:hover{
 color:white;
+text-shadow:0 0 10px red;
 }
 
 .container{
 padding:60px 20px;
-max-width:900px;
+max-width:1000px;
 margin:auto;
 text-align:center;
 }
 
 .card{
-background:#151515;
+background:rgba(255,255,255,0.08);
 padding:25px;
-margin:20px 0;
-border-radius:15px;
-box-shadow:0 0 20px rgba(255,75,125,0.3);
+margin:20px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,0,0,0.5);
+transition:0.4s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 40px rgba(255,0,0,1);
+}
+
+h1{
+color:#ff9999;
+text-shadow:0 0 20px red;
+}
+
+footer{
+padding:20px;
+background:#1a0000;
+margin-top:50px;
 }
