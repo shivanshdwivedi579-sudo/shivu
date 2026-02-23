@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forever Love ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
 body{
-font-family:'Poppins',sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 background:linear-gradient(-45deg,#ff4e50,#ff758c,#ff7eb3,#ff9966);
 background-size:400% 400%;
 animation:bg 12s ease infinite;
+overflow:hidden;
 color:white;
 text-align:center;
-overflow-x:hidden;
 }
 
 @keyframes bg{
@@ -25,53 +32,35 @@ overflow-x:hidden;
 100%{background-position:0% 50%;}
 }
 
-h1{
-font-family:'Great Vibes',cursive;
-font-size:65px;
-margin-top:50px;
-text-shadow:0 0 20px rgba(255,255,255,0.8);
-}
-
 .card{
-max-width:900px;
-margin:40px auto;
-padding:30px;
 background:rgba(255,255,255,0.15);
+padding:40px;
 border-radius:25px;
 backdrop-filter:blur(15px);
-box-shadow:0 0 40px rgba(255,255,255,0.3);
+box-shadow:0 0 40px rgba(0,0,0,0.3);
+max-width:600px;
 }
 
 #shayari{
-font-size:20px;
 min-height:80px;
-line-height:1.8;
+font-size:18px;
+margin:15px 0;
 transition:0.5s;
 }
 
 button{
-padding:12px 30px;
+padding:12px 25px;
 border:none;
 border-radius:30px;
-font-size:16px;
+cursor:pointer;
+font-size:15px;
 background:white;
 color:#ff4b7d;
-cursor:pointer;
-margin-top:20px;
 transition:0.3s;
 }
 
-button:hover{transform:scale(1.1);}
-
-.slideshow{
-margin-top:40px;
-}
-
-.slideshow img{
-width:260px;
-border-radius:20px;
-box-shadow:0 0 30px rgba(255,255,255,0.6);
-transition:1s;
+button:hover{
+transform:scale(1.1);
 }
 
 /* Floating Hearts */
@@ -87,52 +76,164 @@ animation:float 6s linear infinite;
 100%{transform:translateY(-100vh) rotate(360deg); opacity:0;}
 }
 
-footer{
-margin:50px 0 20px;
-font-size:14px;
-opacity:0.8;
+/* Overlay Love Letter */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+visibility:hidden;
+transition:0.5s;
+}
+
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+
+.letter{
+background:white;
+color:#333;
+padding:40px;
+border-radius:20px;
+max-width:600px;
+animation:zoomIn 0.6s ease;
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.5);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.close{
+margin-top:20px;
+background:#ff4b7d;
+color:white;
 }
 </style>
 </head>
 
 <body>
 
-<h1>For My Forever ❤️</h1>
-
 <div class="card">
+<h1>For My Forever ❤️</h1>
 <p id="shayari"></p>
-<button onclick="loveLetter()">Open Love Letter 💌</button>
+<button onclick="openLetter()">Open Love Letter 💌</button>
 </div>
 
-<div class="slideshow">
-<img id="slide" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+<div class="overlay" id="overlay">
+<div class="letter">
+<h2>My Love ❤️</h2>
+<p>
+From the day you came into my life, everything changed.  
+You are my happiness, my strength, and my forever.  
+Every heartbeat whispers your name.  
+No matter what happens, my heart will always belong to you.  
+I promise to love you more with every passing day.
+</p>
+<button class="close" onclick="closeLetter()">Close</button>
+</div>
 </div>
 
-<footer>
-Made With ❤️ By Your Loving Husband
-</footer>
-
-<audio autoplay loop>
+<audio id="music" loop>
 <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
 </audio>
 
 <script>
+/* 100 Romantic Shayari */
 const shayariList = [
 "Tum meri zindagi ki sabse haseen kahani ho.",
-"Har subah tumhari yaad se roshan hoti hai.",
-"Tumhari muskaan meri duniya ki roshni hai.",
 "Tum meri rooh ka sukoon ho.",
+"Tumhari muskaan meri duniya ka noor hai.",
 "Har dhadkan me tum basi ho.",
 "Tum meri har dua ka jawab ho.",
-"Tum saath ho to har mushkil aasan hai.",
-"Tum meri duniya ka sabse pyaara rang ho.",
-"Tum meri zindagi ka sabse meetha ehsaas ho.",
-"Har pal tumhare saath jannat lagta hai.",
 "Tum meri khushiyon ka sabab ho.",
-"Tum meri har muskaan ki wajah ho.",
-"Tum meri rooh ki sabse pyaari awaaz ho.",
+"Tum saath ho to har pal jannat hai.",
+"Tum meri duniya ka sabse pyaara rang ho.",
+"Tum meri har subah ka ujala ho.",
 "Tum meri har raat ka khwab ho.",
-"Tum meri zindagi ka sabse bada gift ho."
+"Tum meri zindagi ka sabse bada gift ho.",
+"Tum meri rooh ki awaaz ho.",
+"Tum meri har jeet ka garv ho.",
+"Tum meri har pal ki roshni ho.",
+"Tum meri duniya ka sabse roshan sitara ho.",
+"Tum meri har muskaan ka sabab ho.",
+"Tum meri zindagi ka sabse meetha ehsaas ho.",
+"Tum meri rooh ka sabse gehra pyaar ho.",
+"Tum meri har dua ki taqat ho.",
+"Tum meri duniya ka sabse pyaara sach ho.",
+
+"Tum meri har subah ki muskaan ho.",
+"Tum meri zindagi ka sabse haseen tohfa ho.",
+"Tum meri rooh ka sabse khoobsurat ehsaas ho.",
+"Tum meri har khushi ki manzil ho.",
+"Tum meri duniya ka sabse meetha geet ho.",
+"Tum meri zindagi ka sabse roshan noor ho.",
+"Tum meri har pal ki dhadkan ho.",
+"Tum meri rooh ka sabse pyaara raaz ho.",
+"Tum meri har dua ka asar ho.",
+"Tum meri duniya ka sabse gehra pyaar ho.",
+
+"Tum meri zindagi ki sabse pyaari tasveer ho.",
+"Tum meri har subah ka sukoon ho.",
+"Tum meri rooh ka sabse meetha ehsaas ho.",
+"Tum meri har khushi ka noor ho.",
+"Tum meri duniya ka sabse pyaara lamha ho.",
+"Tum meri zindagi ki sabse meethi yaad ho.",
+"Tum meri rooh ka sabse gehra sukoon ho.",
+"Tum meri har pal ki umeed ho.",
+"Tum meri duniya ka sabse pyaara armaan ho.",
+"Tum meri zindagi ka sabse roshan khwab ho.",
+
+"Tum meri rooh ki sabse pyaari dua ho.",
+"Tum meri har subah ki roshni ho.",
+"Tum meri zindagi ka sabse gehra ehsaas ho.",
+"Tum meri har musibat ka sahara ho.",
+"Tum meri duniya ka sabse khoobsurat lamha ho.",
+"Tum meri har pal ki khushi ho.",
+"Tum meri zindagi ka sabse roshan sitara ho.",
+"Tum meri rooh ka sabse pyaara geet ho.",
+"Tum meri har dua ki umeed ho.",
+"Tum meri duniya ka sabse pyaara khwab ho.",
+
+"Tum meri zindagi ka sabse haseen mod ho.",
+"Tum meri rooh ka sabse khoobsurat rang ho.",
+"Tum meri har khushi ka sabab ho.",
+"Tum meri duniya ka sabse pyaara ehsaas ho.",
+"Tum meri zindagi ka sabse meetha lamha ho.",
+"Tum meri rooh ka sabse gehra raaz ho.",
+"Tum meri har subah ka noor ho.",
+"Tum meri duniya ka sabse pyaara sach ho.",
+"Tum meri zindagi ka sabse gehra pyaar ho.",
+"Tum meri rooh ki sabse pyaari mehfil ho.",
+
+"Tum meri har pal ki manzil ho.",
+"Tum meri duniya ka sabse roshan lamha ho.",
+"Tum meri zindagi ka sabse meetha geet ho.",
+"Tum meri rooh ka sabse gehra sukoon ho.",
+"Tum meri har dua ka sabse pyaara jawab ho.",
+"Tum meri duniya ka sabse khoobsurat armaan ho.",
+"Tum meri zindagi ki sabse roshan kahani ho.",
+"Tum meri rooh ka sabse pyaara noor ho.",
+"Tum meri har pal ka khwab ho.",
+"Tum meri duniya ka sabse gehra ehsaas ho.",
+
+"Tum meri zindagi ka sabse pyaara sach ho.",
+"Tum meri rooh ka sabse khoobsurat lamha ho.",
+"Tum meri har subah ka pyaara ehsaas ho.",
+"Tum meri duniya ka sabse roshan khwab ho.",
+"Tum meri zindagi ka sabse meetha raaz ho.",
+"Tum meri rooh ki sabse pyaari awaaz ho.",
+"Tum meri har dua ka noor ho.",
+"Tum meri duniya ka sabse pyaara sitara ho.",
+"Tum meri zindagi ka sabse khoobsurat sapna ho.",
+"Tum meri rooh ka sabse gehra sukoon ho."
 ];
 
 let i=0;
@@ -155,25 +256,16 @@ setTimeout(()=>heart.remove(),6000);
 }
 setInterval(createHeart,400);
 
-/* Slideshow */
-const images=[
-"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-"https://images.unsplash.com/photo-1517841905240-472988babdf9",
-"https://images.unsplash.com/photo-1492724441997-5dc865305da7"
-];
-let s=0;
-function slideShow(){
-document.getElementById("slide").src=images[s];
-s=(s+1)%images.length;
-}
-setInterval(slideShow,3000);
-
 /* Love Letter */
-function loveLetter(){
-alert("You are my today, my tomorrow, and my forever ❤️");
+function openLetter(){
+document.getElementById("overlay").classList.add("active");
+document.getElementById("music").play();
+}
+
+function closeLetter(){
+document.getElementById("overlay").classList.remove("active");
 }
 </script>
 
 </body>
 </html>
-
