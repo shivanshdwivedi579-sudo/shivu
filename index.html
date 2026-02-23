@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Love ❤️</title>
+<title>Forever 🖤</title>
 
 <style>
 *{
@@ -14,51 +14,75 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-background:linear-gradient(-45deg,#ff4e50,#ff758c,#ff7eb3,#ff9966);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
-overflow:hidden;
+background:linear-gradient(135deg,#000000,#1a1a1a,#0f0f0f);
 color:white;
+overflow-x:hidden;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* Shayari Box */
-.shayari-box{
-background:rgba(255,255,255,0.15);
-padding:25px 35px;
-border-radius:20px;
-backdrop-filter:blur(15px);
-box-shadow:0 0 40px rgba(0,0,0,0.3);
-margin-bottom:30px;
+/* Header */
+.header{
 text-align:center;
-max-width:600px;
+padding:40px 20px;
+font-size:35px;
+font-weight:bold;
+color:#ff4b7d;
+text-shadow:0 0 20px #ff4b7d;
 }
 
-#shayari{
-font-size:18px;
-min-height:70px;
+/* Anime Section */
+.anime-gallery{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+padding:20px;
+}
+
+.anime-gallery img{
+width:250px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,75,125,0.6);
+transition:0.4s;
+}
+
+.anime-gallery img:hover{
+transform:scale(1.05);
+}
+
+/* Shayari Boxes */
+.shayari-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:30px;
+}
+
+.shayari-box{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:20px;
+width:260px;
+box-shadow:0 0 20px rgba(255,75,125,0.4);
+transition:0.4s;
+}
+
+.shayari-box:hover{
+transform:translateY(-5px);
+box-shadow:0 0 30px rgba(255,75,125,0.8);
 }
 
 /* Envelope */
 .envelope{
-position:relative;
+margin:40px auto;
 width:220px;
 height:140px;
-background:#fff;
+background:#ff4b7d;
+position:relative;
 cursor:pointer;
-border-radius:8px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-transition:0.5s;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 .envelope:before{
@@ -68,29 +92,24 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:#ff4b7d;
+background:#ff85a2;
 clip-path:polygon(0 0,100% 0,50% 60%);
-transition:0.5s;
 }
 
-.envelope.open:before{
-transform:rotateX(180deg);
-transform-origin:top;
-}
-
-/* Letter Paper */
+/* Letter Popup */
 .letter{
 position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%) scale(0);
-background:#fff;
-color:#333;
+background:#111;
+color:white;
 padding:40px;
 border-radius:15px;
 max-width:600px;
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
+box-shadow:0 0 40px #ff4b7d;
 transition:0.5s;
+text-align:center;
 }
 
 .letter.active{
@@ -113,118 +132,75 @@ position:fixed;
 bottom:-10px;
 font-size:20px;
 animation:float 6s linear infinite;
+color:#ff4b7d;
 }
 
 @keyframes float{
-0%{transform:translateY(0) rotate(0deg); opacity:1;}
-100%{transform:translateY(-100vh) rotate(360deg); opacity:0;}
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="shayari-box">
-<h2>For My Forever ❤️</h2>
-<p id="shayari"></p>
+<div class="header">For My Forever 🖤</div>
+
+<!-- Anime Images -->
+<div class="anime-gallery">
+<img src="https://i.imgur.com/8Km9tLL.jpg">
+<img src="https://i.imgur.com/5tj6S7Ol.jpg">
+<img src="https://i.imgur.com/9yG3F6Cl.jpg">
 </div>
 
-<div class="envelope" onclick="openLetter()" id="env"></div>
+<!-- Shayari Section -->
+<div class="shayari-container">
 
+<div class="shayari-box">Tum meri rooh ka sukoon ho.</div>
+<div class="shayari-box">Tumhari muskaan meri duniya ka noor hai.</div>
+<div class="shayari-box">Har dhadkan me tum basi ho.</div>
+<div class="shayari-box">Tum meri har dua ka jawab ho.</div>
+<div class="shayari-box">Tum meri khushiyon ka sabab ho.</div>
+<div class="shayari-box">Tum saath ho to har pal jannat hai.</div>
+<div class="shayari-box">Tum meri duniya ka sabse pyaara rang ho.</div>
+<div class="shayari-box">Tum meri har subah ka ujala ho.</div>
+<div class="shayari-box">Tum meri har raat ka khwab ho.</div>
+<div class="shayari-box">Tum meri zindagi ka sabse bada gift ho.</div>
+
+</div>
+
+<!-- Envelope -->
+<div class="envelope" onclick="openLetter()"></div>
+
+<!-- Letter -->
 <div class="letter" id="letter">
-<h2>My Love ❤️</h2>
+<h2>My Love 🖤</h2>
 <p>
-From the moment you entered my life, everything changed.  
-You are my peace, my happiness, and my forever.  
-Every heartbeat whispers your name.  
-I promise to stand beside you in every situation.  
-No matter what happens, my heart will always belong to you.
+You are my peace in chaos, my light in darkness,  
+and the reason my heart beats with meaning.  
+No matter what happens, my love will always stay true.
 </p>
 <button class="close" onclick="closeLetter()">Close</button>
 </div>
 
-<audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-</audio>
-
 <script>
-/* 100 Shayari */
-const shayariList=[
-"Tum meri zindagi ki sabse haseen kahani ho.",
-"Tum meri rooh ka sukoon ho.",
-"Tumhari muskaan meri duniya ka noor hai.",
-"Har dhadkan me tum basi ho.",
-"Tum meri har dua ka jawab ho.",
-"Tum meri khushiyon ka sabab ho.",
-"Tum saath ho to har pal jannat hai.",
-"Tum meri duniya ka sabse pyaara rang ho.",
-"Tum meri har subah ka ujala ho.",
-"Tum meri har raat ka khwab ho.",
-"Tum meri zindagi ka sabse bada gift ho.",
-"Tum meri rooh ki awaaz ho.",
-"Tum meri har jeet ka garv ho.",
-"Tum meri har pal ki roshni ho.",
-"Tum meri duniya ka sabse roshan sitara ho.",
-"Tum meri har muskaan ka sabab ho.",
-"Tum meri zindagi ka sabse meetha ehsaas ho.",
-"Tum meri rooh ka sabse gehra pyaar ho.",
-"Tum meri har dua ki taqat ho.",
-"Tum meri duniya ka sabse pyaara sach ho.",
-
-"Tum meri har subah ki muskaan ho.",
-"Tum meri zindagi ka sabse haseen tohfa ho.",
-"Tum meri rooh ka sabse khoobsurat ehsaas ho.",
-"Tum meri har khushi ki manzil ho.",
-"Tum meri duniya ka sabse meetha geet ho.",
-"Tum meri zindagi ka sabse roshan noor ho.",
-"Tum meri har pal ki dhadkan ho.",
-"Tum meri rooh ka sabse pyaara raaz ho.",
-"Tum meri har dua ka asar ho.",
-"Tum meri duniya ka sabse gehra pyaar ho.",
-
-"Tum meri zindagi ki sabse pyaari tasveer ho.",
-"Tum meri har subah ka sukoon ho.",
-"Tum meri rooh ka sabse meetha ehsaas ho.",
-"Tum meri har khushi ka noor ho.",
-"Tum meri duniya ka sabse pyaara lamha ho.",
-"Tum meri zindagi ki sabse meethi yaad ho.",
-"Tum meri rooh ka sabse gehra sukoon ho.",
-"Tum meri har pal ki umeed ho.",
-"Tum meri duniya ka sabse pyaara armaan ho.",
-"Tum meri zindagi ka sabse roshan khwab ho."
-];
-
-/* Auto Change */
-let i=0;
-function changeShayari(){
-document.getElementById("shayari").innerText=shayariList[i];
-i=(i+1)%shayariList.length;
-}
-setInterval(changeShayari,2500);
-changeShayari();
-
-/* Open Letter */
 function openLetter(){
 document.getElementById("letter").classList.add("active");
-document.getElementById("env").classList.add("open");
-document.getElementById("music").play();
 }
-
 function closeLetter(){
 document.getElementById("letter").classList.remove("active");
 }
 
-/* Hearts */
+/* Floating Hearts */
 function createHeart(){
 const heart=document.createElement("div");
 heart.classList.add("heart");
-heart.innerText="❤️";
+heart.innerText="❤";
 heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*25+15)+"px";
 document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
 }
-setInterval(createHeart,400);
+setInterval(createHeart,500);
 </script>
 
 </body>
