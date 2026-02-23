@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Proposal ❤️</title>
+<title>Forever Proposal ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -14,7 +14,7 @@ align-items:center;
 flex-direction:column;
 background:linear-gradient(-45deg,#2b0000,#660000,#990000,#cc0000);
 background-size:400% 400%;
-animation:bg 10s ease infinite;
+animation:bg 12s ease infinite;
 font-family:'Poppins',sans-serif;
 color:white;
 text-align:center;
@@ -28,15 +28,9 @@ overflow:hidden;
 }
 
 h1{
-font-size:40px;
-text-shadow:0 0 20px red;
-margin-bottom:20px;
-animation:fadeIn 2s ease;
-}
-
-p{
-font-size:20px;
-margin-bottom:30px;
+font-size:42px;
+text-shadow:0 0 25px red;
+min-height:60px;
 }
 
 button{
@@ -64,9 +58,16 @@ button:hover{
 transform:scale(1.1);
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(-20px);}
-to{opacity:1;transform:translateY(0);}
+/* Ring Animation */
+.ring{
+font-size:60px;
+animation:ringPop 2s infinite;
+}
+
+@keyframes ringPop{
+0%{transform:scale(0.8);}
+50%{transform:scale(1.2);}
+100%{transform:scale(0.8);}
 }
 
 /* Floating Hearts */
@@ -82,13 +83,39 @@ color:#ff1a1a;
 0%{transform:translateY(0);opacity:1;}
 100%{transform:translateY(-100vh);opacity:0;}
 }
+
+/* Rose Petals */
+.petal{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall 8s linear infinite;
+color:#ff4d4d;
+}
+
+@keyframes fall{
+0%{transform:translateY(0);}
+100%{transform:translateY(100vh);}
+}
+
+/* Firework */
+.firework{
+position:fixed;
+font-size:25px;
+animation:explode 1s ease forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(0);}
+100%{transform:scale(2);opacity:0;}
+}
 </style>
 </head>
 
 <body>
 
-<h1>Will You Be Mine Forever? 💍❤️</h1>
-<p>You are my today, my tomorrow, and my always.</p>
+<div class="ring">💍</div>
+<h1 id="typing"></h1>
 
 <div>
 <button class="yes" onclick="accepted()">YES ❤️</button>
@@ -100,17 +127,44 @@ color:#ff1a1a;
 </audio>
 
 <script>
+
+/* Typing Effect */
+const text="Will You Be Mine Forever? ❤️";
+let i=0;
+function typeEffect(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeEffect,80);
+}
+}
+typeEffect();
+
+/* YES Click */
 function accepted(){
+for(let i=0;i<20;i++){
+let fw=document.createElement("div");
+fw.classList.add("firework");
+fw.innerText="✨";
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*100+"vh";
+document.body.appendChild(fw);
+setTimeout(()=>fw.remove(),1000);
+}
+setTimeout(()=>{
 alert("She said YES ❤️ Forever starts now!");
 window.location.href="about.html";
+},800);
 }
 
+/* NO Button Run */
 function moveButton(btn){
 btn.style.position="absolute";
 btn.style.top=Math.random()*80+"%";
 btn.style.left=Math.random()*80+"%";
 }
 
+/* Floating Hearts */
 function createHeart(){
 const heart=document.createElement("div");
 heart.classList.add("heart");
@@ -119,7 +173,19 @@ heart.style.left=Math.random()*100+"vw";
 document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
 }
-setInterval(createHeart,500);
+setInterval(createHeart,600);
+
+/* Rose Petals */
+function createPetal(){
+const petal=document.createElement("div");
+petal.classList.add("petal");
+petal.innerText="🌹";
+petal.style.left=Math.random()*100+"vw";
+document.body.appendChild(petal);
+setTimeout(()=>petal.remove(),8000);
+}
+setInterval(createPetal,700);
+
 </script>
 
 </body>
