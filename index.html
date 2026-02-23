@@ -1,55 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
-<link rel="stylesheet" href="style.css">
-</head>
-  <script>
-function createHeart(){
-const heart=document.createElement("div");
-heart.innerText="❤";
-heart.style.position="fixed";
-heart.style.bottom="-10px";
-heart.style.left=Math.random()*100+"vw";
-heart.style.color="#ff1a1a";
-heart.style.fontSize="20px";
-heart.style.animation="float 6s linear infinite";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-}
-setInterval(createHeart,600);
-</script>
+<title>Proposal ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(-45deg,#2b0000,#660000,#990000,#cc0000);
+background-size:400% 400%;
+animation:bg 10s ease infinite;
+font-family:'Poppins',sans-serif;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+h1{
+font-size:40px;
+text-shadow:0 0 20px red;
+margin-bottom:20px;
+animation:fadeIn 2s ease;
+}
+
+p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
+}
+
+.yes{
+background:#ff1a1a;
+color:white;
+box-shadow:0 0 20px red;
+}
+
+.no{
+background:white;
+color:red;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(-20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* Floating Hearts */
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+animation:float 6s linear infinite;
+color:#ff1a1a;
+}
+
 @keyframes float{
 0%{transform:translateY(0);opacity:1;}
 100%{transform:translateY(-100vh);opacity:0;}
 }
 </style>
+</head>
+
 <body>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About Her</a>
-<a href="story.html">Our Story</a>
-<a href="memories.html">Memories</a>
-<a href="shayari.html">Shayari</a>
-<a href="letter.html">Love Letter</a>
-<a href="promises.html">Promises</a>
-<a href="gallery.html">Gallery</a>
-<a href="dreams.html">Future Dreams</a>
-<a href="reasons.html">Reasons</a>
-<a href="moments.html">Moments</a>
-<a href="contact.html">Final</a>
-</nav>
+<h1>Will You Be Mine Forever? 💍❤️</h1>
+<p>You are my today, my tomorrow, and my always.</p>
 
-<div class="container">
-<h1>Welcome To Our Forever 🖤</h1>
-<div class="card">
-<p>This website is dedicated to the most special person in my life.</p>
+<div>
+<button class="yes" onclick="accepted()">YES ❤️</button>
+<button class="no" onmouseover="moveButton(this)">NO 😅</button>
 </div>
-</div>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function accepted(){
+alert("She said YES ❤️ Forever starts now!");
+window.location.href="about.html";
+}
+
+function moveButton(btn){
+btn.style.position="absolute";
+btn.style.top=Math.random()*80+"%";
+btn.style.left=Math.random()*80+"%";
+}
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerText="❤";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,500);
+</script>
 
 </body>
 </html>
-
