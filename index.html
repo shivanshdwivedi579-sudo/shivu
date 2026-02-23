@@ -5,50 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forever 🖤</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#000000,#111,#1a1a1a);
+background:#0d0d0d;
 color:white;
 overflow-x:hidden;
 }
 
-/* Title */
-.header{
-text-align:center;
-padding:40px 20px;
-font-size:38px;
-font-weight:bold;
-color:#ff4b7d;
-text-shadow:0 0 25px #ff4b7d;
-}
-
-/* Image Section */
-.image-section{
+/* Navbar */
+nav{
 display:flex;
 justify-content:center;
+align-items:center;
 padding:20px;
+font-size:22px;
+font-weight:600;
+letter-spacing:2px;
+background:#111;
+color:#ff4b7d;
+box-shadow:0 0 20px rgba(255,75,125,0.3);
 }
 
-.image-section img{
+/* Hero Section */
+.hero{
+text-align:center;
+padding:60px 20px;
+}
+
+.hero img{
 width:320px;
 border-radius:20px;
-box-shadow:0 0 40px rgba(255,75,125,0.8);
-transition:0.4s;
+box-shadow:0 0 40px rgba(255,75,125,0.6);
+margin-bottom:30px;
 }
 
-.image-section img:hover{
-transform:scale(1.05);
+.hero h1{
+font-size:32px;
+margin-bottom:15px;
 }
 
-/* Shayari Grid */
-.shayari-container{
+.hero p{
+opacity:0.8;
+}
+
+/* Shayari Section */
+.shayari-section{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
@@ -56,73 +66,81 @@ gap:20px;
 padding:40px 20px;
 }
 
-.shayari-box{
-background:rgba(255,255,255,0.07);
-backdrop-filter:blur(10px);
-border-radius:20px;
+.shayari-card{
+background:#151515;
 padding:20px;
 width:260px;
-box-shadow:0 0 25px rgba(255,75,125,0.5);
-transition:0.4s;
+border-radius:15px;
+box-shadow:0 0 15px rgba(255,75,125,0.3);
+transition:0.3s;
 text-align:center;
 }
 
-.shayari-box:hover{
+.shayari-card:hover{
 transform:translateY(-5px);
-box-shadow:0 0 35px rgba(255,75,125,1);
+box-shadow:0 0 25px rgba(255,75,125,0.8);
 }
 
-/* Envelope */
-.envelope{
-margin:50px auto;
-width:220px;
-height:140px;
+/* Button */
+.btn-container{
+text-align:center;
+margin:40px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
 background:#ff4b7d;
-position:relative;
+color:white;
 cursor:pointer;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.6);
+font-size:15px;
+transition:0.3s;
 }
 
-.envelope:before{
-content:"";
-position:absolute;
+button:hover{
+transform:scale(1.05);
+}
+
+/* Love Letter Modal */
+.modal{
+position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:#ff85a2;
-clip-path:polygon(0 0,100% 0,50% 60%);
+background:rgba(0,0,0,0.9);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+visibility:hidden;
+transition:0.4s;
 }
 
-/* Letter */
-.letter{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) scale(0);
-background:#111;
-color:white;
+.modal.active{
+opacity:1;
+visibility:visible;
+}
+
+.modal-content{
+background:#1a1a1a;
 padding:40px;
-border-radius:20px;
+border-radius:15px;
 max-width:600px;
-box-shadow:0 0 50px #ff4b7d;
-transition:0.5s;
 text-align:center;
+box-shadow:0 0 40px #ff4b7d;
+animation:fadeIn 0.6s ease;
 }
 
-.letter.active{
-transform:translate(-50%,-50%) scale(1);
+@keyframes fadeIn{
+from{transform:scale(0.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
 }
 
 .close{
 margin-top:20px;
-padding:10px 20px;
-border:none;
-border-radius:20px;
 background:#ff4b7d;
-color:white;
-cursor:pointer;
 }
 
 /* Floating Hearts */
@@ -143,38 +161,41 @@ color:#ff4b7d;
 
 <body>
 
-<div class="header">For My Forever 🖤</div>
+<nav>FOREVER LOVE 🖤</nav>
 
-<div class="image-section">
-<img src="anime-love.jpg" alt="Romantic Anime">
+<section class="hero">
+<img src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999" alt="Romantic Couple">
+<h1>For My Forever</h1>
+<p>You are the most beautiful chapter of my life.</p>
+</section>
+
+<section class="shayari-section">
+
+<div class="shayari-card">Tum meri rooh ka sukoon ho.</div>
+<div class="shayari-card">Tumhari muskaan meri duniya ka noor hai.</div>
+<div class="shayari-card">Har dhadkan me tum basi ho.</div>
+<div class="shayari-card">Tum meri har dua ka jawab ho.</div>
+<div class="shayari-card">Tum meri khushiyon ka sabab ho.</div>
+<div class="shayari-card">Tum saath ho to har pal jannat hai.</div>
+<div class="shayari-card">Tum meri duniya ka sabse pyaara rang ho.</div>
+<div class="shayari-card">Tum meri har subah ka ujala ho.</div>
+
+</section>
+
+<div class="btn-container">
+<button onclick="openLetter()">Open Love Letter 💌</button>
 </div>
 
-<div class="shayari-container">
-
-<div class="shayari-box">Tum meri rooh ka sukoon ho.</div>
-<div class="shayari-box">Tumhari muskaan meri duniya ka noor hai.</div>
-<div class="shayari-box">Har dhadkan me tum basi ho.</div>
-<div class="shayari-box">Tum meri har dua ka jawab ho.</div>
-<div class="shayari-box">Tum meri khushiyon ka sabab ho.</div>
-<div class="shayari-box">Tum saath ho to har pal jannat hai.</div>
-<div class="shayari-box">Tum meri duniya ka sabse pyaara rang ho.</div>
-<div class="shayari-box">Tum meri har subah ka ujala ho.</div>
-<div class="shayari-box">Tum meri har raat ka khwab ho.</div>
-<div class="shayari-box">Tum meri zindagi ka sabse bada gift ho.</div>
-
-</div>
-
-<div class="envelope" onclick="openLetter()"></div>
-
-<div class="letter" id="letter">
+<div class="modal" id="letter">
+<div class="modal-content">
 <h2>My Love 🖤</h2>
 <p>
-You are my light in darkness,  
-my calm in chaos,  
-and my forever in every lifetime.  
+From the moment you came into my life, everything changed.  
+You are my peace, my happiness, and my forever.  
 No matter what happens, my heart will always belong to you.
 </p>
 <button class="close" onclick="closeLetter()">Close</button>
+</div>
 </div>
 
 <script>
@@ -185,7 +206,6 @@ function closeLetter(){
 document.getElementById("letter").classList.remove("active");
 }
 
-/* Floating Hearts */
 function createHeart(){
 const heart=document.createElement("div");
 heart.classList.add("heart");
@@ -194,7 +214,7 @@ heart.style.left=Math.random()*100+"vw";
 document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
 }
-setInterval(createHeart,500);
+setInterval(createHeart,600);
 </script>
 
 </body>
