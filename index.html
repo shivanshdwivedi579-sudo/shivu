@@ -14,75 +14,74 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#000000,#1a1a1a,#0f0f0f);
+background:linear-gradient(135deg,#000000,#111,#1a1a1a);
 color:white;
 overflow-x:hidden;
 }
 
-/* Header */
+/* Title */
 .header{
 text-align:center;
 padding:40px 20px;
-font-size:35px;
+font-size:38px;
 font-weight:bold;
 color:#ff4b7d;
-text-shadow:0 0 20px #ff4b7d;
+text-shadow:0 0 25px #ff4b7d;
 }
 
-/* Anime Section */
-.anime-gallery{
+/* Image Section */
+.image-section{
 display:flex;
 justify-content:center;
-flex-wrap:wrap;
-gap:20px;
 padding:20px;
 }
 
-.anime-gallery img{
-width:250px;
+.image-section img{
+width:320px;
 border-radius:20px;
-box-shadow:0 0 25px rgba(255,75,125,0.6);
+box-shadow:0 0 40px rgba(255,75,125,0.8);
 transition:0.4s;
 }
 
-.anime-gallery img:hover{
+.image-section img:hover{
 transform:scale(1.05);
 }
 
-/* Shayari Boxes */
+/* Shayari Grid */
 .shayari-container{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
 gap:20px;
-padding:30px;
+padding:40px 20px;
 }
 
 .shayari-box{
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.07);
 backdrop-filter:blur(10px);
 border-radius:20px;
 padding:20px;
 width:260px;
-box-shadow:0 0 20px rgba(255,75,125,0.4);
+box-shadow:0 0 25px rgba(255,75,125,0.5);
 transition:0.4s;
+text-align:center;
 }
 
 .shayari-box:hover{
 transform:translateY(-5px);
-box-shadow:0 0 30px rgba(255,75,125,0.8);
+box-shadow:0 0 35px rgba(255,75,125,1);
 }
 
 /* Envelope */
 .envelope{
-margin:40px auto;
+margin:50px auto;
 width:220px;
 height:140px;
 background:#ff4b7d;
 position:relative;
 cursor:pointer;
 border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
 }
 
 .envelope:before{
@@ -96,7 +95,7 @@ background:#ff85a2;
 clip-path:polygon(0 0,100% 0,50% 60%);
 }
 
-/* Letter Popup */
+/* Letter */
 .letter{
 position:fixed;
 top:50%;
@@ -105,9 +104,9 @@ transform:translate(-50%,-50%) scale(0);
 background:#111;
 color:white;
 padding:40px;
-border-radius:15px;
+border-radius:20px;
 max-width:600px;
-box-shadow:0 0 40px #ff4b7d;
+box-shadow:0 0 50px #ff4b7d;
 transition:0.5s;
 text-align:center;
 }
@@ -146,14 +145,10 @@ color:#ff4b7d;
 
 <div class="header">For My Forever 🖤</div>
 
-<!-- Anime Images -->
-<div class="anime-gallery">
-<img src="https://i.imgur.com/8Km9tLL.jpg">
-<img src="https://i.imgur.com/5tj6S7Ol.jpg">
-<img src="https://i.imgur.com/9yG3F6Cl.jpg">
+<div class="image-section">
+<img src="anime-love.jpg" alt="Romantic Anime">
 </div>
 
-<!-- Shayari Section -->
 <div class="shayari-container">
 
 <div class="shayari-box">Tum meri rooh ka sukoon ho.</div>
@@ -169,16 +164,15 @@ color:#ff4b7d;
 
 </div>
 
-<!-- Envelope -->
 <div class="envelope" onclick="openLetter()"></div>
 
-<!-- Letter -->
 <div class="letter" id="letter">
 <h2>My Love 🖤</h2>
 <p>
-You are my peace in chaos, my light in darkness,  
-and the reason my heart beats with meaning.  
-No matter what happens, my love will always stay true.
+You are my light in darkness,  
+my calm in chaos,  
+and my forever in every lifetime.  
+No matter what happens, my heart will always belong to you.
 </p>
 <button class="close" onclick="closeLetter()">Close</button>
 </div>
